@@ -10,3 +10,12 @@ services:
     volumes:
       - /app/node_modules # ignore node_modules mapping
       - .:/app # map current folder outside container to workdir
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["yarn", "run", "test"]
