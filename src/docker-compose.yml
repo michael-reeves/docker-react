@@ -2,7 +2,9 @@ version: '3'
 
 services:
   web:
-    build: .
+    build: 
+      context: .  # where are the files and folders for the image to be pulled from
+      dockerfile: Dockerfile.dev  # specify the Dockerfile
     ports: 
       - "3000:3000"
     volumes:
