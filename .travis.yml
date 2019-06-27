@@ -1,0 +1,8 @@
+sudo: required
+services:
+  - docker # add docker into the container
+
+before_install:
+  # some series of setup that needs to be accomplished 
+  # before we run our tests
+  - docker build -t michaelreeves/docker-react -f Dockerfile.dev .
