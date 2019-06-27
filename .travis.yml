@@ -17,4 +17,4 @@ script:
   # default command with yarn run test
   # -- --coverage prevents the script from entering 
   # watch mode and adds a coverage report
-  - docker run michaelreeves/docker-react yarn run test -- --coverage
+  - docker run -e CI=true michaelreeves/docker-react yarn run test -- --coverage
