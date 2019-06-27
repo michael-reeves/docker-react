@@ -2,7 +2,19 @@ sudo: required
 services:
   - docker # add docker into the container
 
+# some series of setup that needs to be accomplished 
+# before we run our tests
 before_install:
-  # some series of setup that needs to be accomplished 
-  # before we run our tests
   - docker build -t michaelreeves/docker-react -f Dockerfile.dev .
+
+# contains all the commands that are 
+# necessary to run our test suite
+# travis will watch the output of these commands 
+# and if it gets an output other than 0 it will
+# assume that our build/test suite failed
+script:
+  # run the container we just build, but override the
+  # default command with yarn run test
+  # -- --coverage prevents the script from entering 
+  # watch mode and adds a coverage report
+  - docker run michaelreeves/docker-react yarn run test -- --coverage
